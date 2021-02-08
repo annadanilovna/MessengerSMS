@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    android:layout_marginHorizontal="3dp">
+
+    <!--    <TextView-->
+    <!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center_vertical"-->
+    <!--        android:padding="5dp"-->
+    <!--        android:singleLine="true"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:ellipsize="end"-->
+    <!--        android:drawableRight="@drawable/ic_action_edit"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:gravity="left"
+            android:paddingVertical="3dp"
+            android:paddingHorizontal="5dp"
+            android:textSize="11dip"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#606060"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#7940C4FF"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2dp">
+
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_marginEnd="2dip"
+            android:src="@drawable/ic_default_profile_pic" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/myrect"
+            android:backgroundTint="@color/purple_500">
+            <TextView
+                android:id="@+id/msg"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="16dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+

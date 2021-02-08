@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="3dp"
+    android:layout_marginTop="2dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:gravity="left"
+            android:paddingVertical="3dp"
+            android:paddingHorizontal="5dp"
+            android:textSize="11dip"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#606060"
+            android:background="@drawable/myrect"
+            android:backgroundTint="#7940C4FF"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#D6D6D6"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp"
+            android:layout_alignParentEnd="true">
+            <TextView
+                android:id="@+id/msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello"
+                android:textSize="16dip"
+                android:textColor="#101010"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

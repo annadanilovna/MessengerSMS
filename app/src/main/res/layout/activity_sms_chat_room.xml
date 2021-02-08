@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    tools:context=".chats.SmsChatRoomActivity"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/bg_doodle"-->
+<!--        android:scaleType="matrix"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/buttonBottomSheetPersistent"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:text="Open Persistent Bottom Sheet" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/buttonBottomSheetModal"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:text="Open Modal Bottom Sheet" />-->
+
+<!--    <include layout="@layout/bottom_sheet_persistent" />-->
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:theme="@style/Theme.MessengerSMS.AppBarOverlay"
+        app:elevation="4dip"
+        android:background="?colorPrimary">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/Theme.MessengerSMS.HeaderBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/Theme.MessengerSMS.PopupOverlay"
+            app:popupTheme="@style/Theme.MessengerSMS.PopupOverlay">
+
+            <ImageView
+                android:id="@+id/profile_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_default_profile_pic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/Theme.MessengerSMS.Toolbar.Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/quicksand"
+                    android:gravity="bottom"
+                    android:textSize="17.0sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/toolbar_subtitle"
+                    style="@style/Theme.MessengerSMS.Toolbar.Text.Subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/quicksand"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textSize="13.0sp" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/conversation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="52dp"
+        android:transcriptMode="alwaysScroll"
+        app:stackFromEnd="true"
+        android:name="io.fantastix.messengersms.chats.SmsChatRoomActivity"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".chats.SmsChatRoomActivity"
+        tools:layout_editor_absoluteX="2dp"
+        tools:listitem="@layout/activity_sms_chat_room_item_in" />
+
+    <LinearLayout
+        android:id="@+id/chatbox"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:layout_gravity="bottom"
+        android:background="#51191919"
+        android:elevation="4dip"
+        android:orientation="horizontal"
+        android:outlineAmbientShadowColor="@color/teal_700"
+        android:outlineSpotShadowColor="@color/purple_500">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_state"
+            android:padding="10dp"
+            android:src="@drawable/ic_menu_circle" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_state"
+            android:layout_marginStart="5dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_plus_circle" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp">
+
+            <EditText
+                android:id="@+id/smsText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:autofillHints="@string/title_chats"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="Type a message"
+                android:importantForAutofill="no"
+                android:inputType="textAutoCorrect|text"
+                android:labelFor="@id/smsText"
+                android:paddingStart="10dp"
+                android:text=""
+                android:textColor="@color/purple_500"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/emojiBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/bg_state"
+                android:padding="5dp"
+                android:src="@drawable/ic_smile" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/micBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_state"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_mic" />
+
+        <ImageButton
+            android:id="@+id/sendBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_state"
+            android:padding="10dp"
+            android:src="@drawable/ic_arrow_right_circle" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
