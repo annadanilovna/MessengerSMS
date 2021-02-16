@@ -7,50 +7,36 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:overScrollMode="never"
-    tools:context=".contacts.ContactsActivity">
+    tools:context=".ContactsActivity">
 
     <!--    <include layout="@layout/toolbar" />-->
 
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/list"-->
-    <!--        android:name="io.fantastix.messengersms.contacts.ContactsActivity"-->
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/linearLayout"-->
     <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_marginLeft="16dp"-->
-    <!--        android:layout_marginRight="16dp"-->
-    <!--        app:layoutManager="LinearLayoutManager"-->
-    <!--        tools:context=".contacts.ContactsActivity"-->
-    <!--        tools:listitem="@layout/activity_contacts_item"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:paddingHorizontal="@dimen/activity_horizontal_margin"-->
     <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_behavior="@string/welcome"/>-->
+    <!--        android:orientation="horizontal">-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="To"/>-->
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linearLayout"-->
+    <!--        <EditText-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginLeft="@dimen/activity_horizontal_margin"/>-->
+    <!--    </LinearLayout>-->
+<!--    <affan.ahmad.tagsedittext.TagTextView-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingHorizontal="@dimen/activity_horizontal_margin"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:orientation="horizontal">-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="To"/>-->
-
-<!--        <EditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="@dimen/activity_horizontal_margin"/>-->
-<!--    </LinearLayout>-->
+<!--        android:layout_height="wrap_content"/>-->
 
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:listitem="@layout/activity_contacts_item" />
 
     <!--    <RelativeLayout-->
@@ -162,5 +148,40 @@
     <!--            app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
 
     <!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
+
+    <!--    <include layout="@layout/toolbar" />-->
+    <!--    <com.google.android.material.appbar.AppBarLayout-->
+    <!--        android:id="@+id/app_bar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@android:color/transparent"-->
+    <!--        android:fitsSystemWindows="true"-->
+    <!--        android:paddingBottom="4dp"-->
+    <!--        app:elevation="0.0dip"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--        <androidx.appcompat.widget.Toolbar-->
+    <!--            android:id="@+id/toolbar"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="?attr/actionBarSize"/>-->
+
+    <!--        <com.google.android.material.textfield.TextInputLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="?attr/actionBarSize"-->
+    <!--            android:orientation="horizontal">-->
+
+    <!--            <androidx.appcompat.widget.AppCompatTextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:text="To: "/>-->
+
+    <!--            <com.google.android.material.textfield.TextInputEditText-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="match_parent"/>-->
+
+    <!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+    <!--    </com.google.android.material.appbar.AppBarLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

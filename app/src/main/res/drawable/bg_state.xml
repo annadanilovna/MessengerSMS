@@ -7,6 +7,6 @@
             <solid android:color="@color/teal_200"/>
         </shape>
     </item>
-    <item
-        android:drawable="@drawable/rounded_corner" />
+    <!--    <item-->
+    <!--        android:drawable="@drawable/rounded_corner" />-->
 </selector>

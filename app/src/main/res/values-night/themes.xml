@@ -1,11 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.MessengerSMS" parent="Theme.MaterialComponents.DayNight">
-        <item name="colorPrimary">@color/black</item>-->
+        <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/ic_launcher_background</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:windowBackground">@color/black</item>
@@ -17,11 +17,13 @@
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textColorSecondary">#eee</item>
         <!--        <item name="android:fontFamily">@font/gilroy_extrabold</item>-->
         <!--        <item name="actionBarStyle">@style/Theme.MessengerSMS.HeaderBar</item>-->
         <item name="actionBarTheme">@style/Theme.MessengerSMS.AppBarOverlay</item>
         <item name="popupTheme">@style/Theme.MessengerSMS.PopupOverlay</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="background">@color/red</item>
     </style>
 
     <style name="Theme.MessengerSMS.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -61,7 +63,8 @@
     </style>
 
     <style name="Theme.MessengerSMS.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:background">#000</item>
+<!--        <item name="colorControlNormal">@color/red</item>-->
+        <item name="android:background">#DA000000</item>
         <item name="android:fontFamily">@font/quicksand_bold</item>
         <item name="android:textSize">18.0dip</item>
         <item name="android:textStyle">bold</item>
@@ -79,6 +82,10 @@
 
     <style name="WindowTitleStyle" parent="TextAppearance.AppCompat.Title">
         <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.MessengerSMS.ChatRoomBox">
+        <item name="android:background">#000000</item>
     </style>
 
 </resources>

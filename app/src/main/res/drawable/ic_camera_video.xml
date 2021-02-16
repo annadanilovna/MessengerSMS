@@ -3,6 +3,10 @@
     <item
         android:state_pressed="true"
         android:drawable="@drawable/ic_camera_video_pressed" />
+
+    <item android:state_enabled="false"
+        android:drawable="@drawable/ic_camera_video_pressed" />
+
     <item
         android:drawable="@drawable/ic_camera_video_normal" />
 </selector>

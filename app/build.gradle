@@ -42,4 +42,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // butter knife
+//    implementation 'com.jakewharton:butterknife:8.8.1'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // glide image library
+    implementation 'com.github.bumptech.glide:glide:4.3.1'
+
+    // volley http library
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+//    implementation 'com.github.anonymous-ME:TagsEditText:0.1.0'
 }

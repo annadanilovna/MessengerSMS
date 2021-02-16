@@ -2,12 +2,9 @@ package io.fantastix.messengersms;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import io.fantastix.messengersms.chats.SMSActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 3000;
@@ -25,5 +22,13 @@ public class SplashScreenActivity extends AppCompatActivity {
                 finish();
 //            }
 //        }, SPLASH_TIME_OUT);
+
+//                if (isDefaultSmsApp()) {
+//                	// invoke main activity
+//                }
+//                else {
+//                	// invoke set_default_sms_app activity
+//                	// then invoke main activity
+//                }
     }
 }

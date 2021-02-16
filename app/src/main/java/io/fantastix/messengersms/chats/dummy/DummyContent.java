@@ -1,6 +1,6 @@
 package io.fantastix.messengersms.chats.dummy;
 
-import io.fantastix.messengersms.chats.Message;
+import io.fantastix.messengersms.model.Message;
 
 import java.util.ArrayList;
 import java.util.HashMap;
