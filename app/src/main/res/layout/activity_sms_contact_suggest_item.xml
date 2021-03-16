@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:gravity="center_vertical"
+    android:minHeight="60dp"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="10dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/contact_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_default_profile_pic"
+        android:layout_gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/contact_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text="A"
+        android:textSize="25dp"
+        android:textColor="@android:color/white"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/colorAccent"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_weight="1"
+        android:text="Name"
+        android:ellipsize="end"
+        android:textSize="15sp"
+        android:textAppearance="?attr/textAppearanceSearchResultTitle" />
+
+</LinearLayout>

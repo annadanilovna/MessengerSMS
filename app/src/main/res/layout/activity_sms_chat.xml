@@ -27,14 +27,14 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            style="@style/Theme.MessengerSMS.HeaderBar"
+            style="@style/Theme.MessengerSMS.Toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:theme="@style/Theme.MessengerSMS.PopupOverlay"
             app:popupTheme="@style/Theme.MessengerSMS.PopupOverlay">
-<!--            app:layout_scrollFlags="enterAlways|snap|scroll">-->
+            <!--            app:layout_scrollFlags="enterAlways|snap|scroll">-->
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_icon"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
@@ -43,8 +43,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="25dp"
                 android:layout_weight="1"
+                android:paddingStart="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -86,6 +86,11 @@
         tools:context=".SMSChatActivity"
         tools:layout_editor_absoluteX="2dp"
         tools:listitem="@layout/item_message_received" />
+    <!--        app:fastScrollEnabled="true"-->
+    <!--        app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"-->
+    <!--        app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"-->
+    <!--        app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"-->
+    <!--        app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"/>-->
 
     <LinearLayout
         android:id="@+id/chatbox"
@@ -130,11 +135,22 @@
             <!--            </view>-->
         </ScrollView>
 
+        <TextView
+            android:id="@+id/invalidSender"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:text="This sender does no support replies"
+            android:gravity="center"
+            android:visibility="gone"/>
+
         <LinearLayout
+            android:id="@+id/validSender"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:visibility="visible">
 
             <ImageButton
                 android:id="@+id/bottom_menu"
@@ -174,6 +190,7 @@
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/bg_state"
                     android:padding="5dp"
+                    android:visibility="gone"
                     android:src="@drawable/ic_smile" />
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -191,8 +208,7 @@
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine|textCapSentences|textNoSuggestions"
                     android:labelFor="@id/smsText"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp"
+                    android:padding="5dp"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
 
@@ -203,6 +219,7 @@
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/bg_state"
                     android:padding="5dp"
+                    android:visibility="gone"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_sim_1" />
             </LinearLayout>
@@ -215,7 +232,7 @@
                 android:layout_marginStart="5dp"
                 android:background="@drawable/bg_state"
                 android:padding="10dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:src="@drawable/ic_mic" />
 
             <ImageButton
@@ -226,7 +243,6 @@
                 android:layout_marginStart="5dp"
                 android:background="@drawable/bg_state"
                 android:padding="10dp"
-                android:visibility="gone"
                 android:src="@drawable/ic_arrow_right_circle" />
         </LinearLayout>
     </LinearLayout>

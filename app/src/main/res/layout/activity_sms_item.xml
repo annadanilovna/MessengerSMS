@@ -4,19 +4,38 @@
     android:layout_height="70dp"
     android:orientation="horizontal"
     android:padding="5dp"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="?android:attr/selectableItemBackground"
+    style="@style/Theme.MessengerSMS.Messages.Item">
 
     <!--        <RelativeLayout-->
     <!--            android:layout_width="match_parent"-->
     <!--            android:layout_height="match_parent">-->
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/contact_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:src="@drawable/bg_doodle"
+        app:civ_border_width="0dp"
+        app:civ_border_color="#FF000000"
         android:layout_margin="5dp"
-        android:src="@drawable/haha"
-        android:contentDescription="@string/title_contacts" />
+        android:contentDescription="@string/title_contacts"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/contact_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text="A"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/primaryLightColor"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"

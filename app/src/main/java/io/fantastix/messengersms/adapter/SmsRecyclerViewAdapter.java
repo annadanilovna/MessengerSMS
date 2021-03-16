@@ -1,8 +1,6 @@
 package io.fantastix.messengersms.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,54 +9,55 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.fantastix.messengersms.R;
 import io.fantastix.messengersms.Utils;
-import io.fantastix.messengersms.model.Contact;
 import io.fantastix.messengersms.model.Message;
-import io.fantastix.messengersms.model.Sms;
 
 public class SmsRecyclerViewAdapter extends RecyclerView.Adapter<SmsRecyclerViewAdapter.SmsViewHolder> implements Filterable {
-    private final List<Sms> mSmsList;
-    private List<Sms> mSmsListFiltered;
-    private final Activity mActivity;
-    private Sms mRecentlyDeletedItem;
+    private List<Message> mSmsList;
+    private List<Message> mSmsListFiltered;
+    private Message mRecentlyDeletedItem;
     private int mRecentlyDeletedItemPosition;
     private SmsAdapterListener listener;
     private Context context;
 
-    public SmsRecyclerViewAdapter(Activity activity, List<Sms> smsList) {
-        this.mActivity = activity;
-        this.context = activity.getApplicationContext();
+    public SmsRecyclerViewAdapter(Context context) {
+        this.context = context;
+    };
+
+    public SmsRecyclerViewAdapter(Context context, List<Message> smsList) {
+        this.context = context;
         this.mSmsList = smsList;
         this.mSmsListFiltered = smsList;
     }
 
-    public SmsRecyclerViewAdapter(Activity activity, List<Sms> smsList, SmsAdapterListener listener) {
-        this.mActivity = activity;
-        this.context = activity.getApplicationContext();
+    public SmsRecyclerViewAdapter(Context context, List<Message> smsList, SmsAdapterListener listener) {
+        this.context = context;
         this.mSmsList = smsList;
         this.mSmsListFiltered = smsList;
         this.listener = listener;
     }
 
+    //    public class SmsViewHolder extends SwipeToAction.ViewHolder<Message> implements View.OnClickListener {
     public class SmsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final View mView;
         //        public final TextView mIdView;
         public final TextView mNicknameView;
         public final TextView mMessageView;
         public final TextView mTimeView;
+        public final TextView mAvatarView;
         public final ImageView mPhotoView;
+        public final TextView mCountView;
         //        public final CardView cv;
-        public Sms mItem;
+        public Message mItem;
         private Context context;
 
         public SmsViewHolder(@NonNull View itemView) {
@@ -69,7 +68,9 @@ public class SmsRecyclerViewAdapter extends RecyclerView.Adapter<SmsRecyclerView
             mNicknameView = (TextView) itemView.findViewById(R.id.contact_name);
             mMessageView = (TextView) itemView.findViewById(R.id.message);
             mTimeView = (TextView) itemView.findViewById(R.id.time);
-            mPhotoView = (ImageView) itemView.findViewById(R.id.photo);
+            mPhotoView = (ImageView) itemView.findViewById(R.id.contact_image);
+            mAvatarView = (TextView) itemView.findViewById(R.id.contact_avatar);
+            mCountView = (TextView) itemView.findViewById(R.id.msg_count);
 //            cv = (CardView) itemView.findViewById(R.id.cv);
 
             itemView.setOnClickListener(this::onClick);
@@ -90,32 +91,68 @@ public class SmsRecyclerViewAdapter extends RecyclerView.Adapter<SmsRecyclerView
     @NonNull
     @Override
     public SmsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_sms_chats_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_sms_item, parent, false);
         return new SmsViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SmsViewHolder holder, int position) {
-        Sms sms = mSmsListFiltered.get(position);
+        Message sms = mSmsListFiltered.get(position);
         holder.mItem = mSmsList.get(position);
 //        holder.mIdView.setText(sms.getId());
         holder.mNicknameView.setText(sms.getContact().getName() != null ? sms.getContact().getName() : sms.getContact().getPhoneNumber());
-        holder.mPhotoView.setImageURI(Uri.parse(sms.getContact().getPhotoUri()));
-//        holder.mPhotoView.setText(sms.getContact().getName() != null ? sms.getContact().getName() : sms.getContact().getPhoneNumber());
-//        sms.getContact().getName().charAt(0)
-//        holder.mNicknameView.setText(sms.getReadState() == 0 ? "400" : "600");
-        if (sms.getReadState() >= 1) {
-            holder.mNicknameView.setTypeface(null, Typeface.NORMAL);
-            holder.mMessageView.setTypeface(null, Typeface.NORMAL);
-            holder.mMessageView.setAlpha(0.7f);
+
+        if (!sms.getContact().getPhotoUri().isEmpty()) {
+            holder.mPhotoView.setVisibility(ImageView.VISIBLE);
+            holder.mPhotoView.setImageURI(Uri.parse(sms.getContact().getPhotoUri()));
         } else {
-            holder.mNicknameView.setTypeface(null, Typeface.BOLD);
-            holder.mMessageView.setTypeface(null, Typeface.BOLD);
-            holder.mMessageView.setAlpha(1f);
+            holder.mAvatarView.setVisibility(TextView.VISIBLE);
+//            holder.mAvatarView.setText(sms.getContact().getName() != null ? sms.getContact().getName().charAt(0) : sms.getContact().getPhoneNumber().charAt(0));
+            holder.mAvatarView.setText(sms.getContact().getName().substring(0, 1));
+//            StringBuilder builder = new StringBuilder(3);
+//            for(int j = 0; j < getName.split(" ").length; j++) {
+//                builder.append(getName.split(" ")[j].substring(0, 1) + ". ");
+//            }
+//
+//            contactName.setText(builder.toString());
+//            Random mRandom = new Random();
+//            int color = Color.argb(255, mRandom.nextInt(256), mRandom.nextInt(256), mRandom.nextInt(256));
+//            ((GradientDrawable) holder.mAvatarView.getBackground()).setColor(color);
+        }
+//        holder.mNicknameView.setText(sms.getReadState() == 0 ? "400" : "600");
+        if (sms.isRead()) {
+//            holder.mNicknameView.setTextColor(context.getResources().getColor(R.style.Theme_MessengerSMS));//Color.argb(87, 12,12, 12));
+//            holder.mNicknameView.setTypeface(null, Typeface.NORMAL);
+//            holder.mMessageView.setTypeface(null, Typeface.NORMAL);
+//            holder.mMessageView.setAlpha(0.7f);
+//            holder.mCountView.setVisibility(View.VISIBLE);
+//            holder.mCountView.setText("3");
+        } else {
+//            holder.mNicknameView.setTextColor(context.getResources().getColor(R.color.whiteHighEmphasis));
+//            holder.mNicknameView.setTypeface(null, Typeface.BOLD);
+//            holder.mMessageView.setTypeface(null, Typeface.BOLD);
+//            holder.mMessageView.setAlpha(1f);
         }
 
         holder.mTimeView.setText(Utils.getDate(sms.getTime()));
-        holder.mMessageView.setText(sms.getMsg());
+        if (sms.getFolderName().equals("sent")) {
+            holder.mMessageView.setText("You: " + sms.getMessage());
+        }
+        else if (sms.getFolderName().equals("draft")) {
+            holder.mMessageView.setText("draft: " + sms.getMessage());
+        }
+        else {
+            holder.mMessageView.setText(sms.getMessage());
+        }
+
+        holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+//                showMenu(position);
+                Toast.makeText(context, "Long press", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
     }
 
@@ -138,12 +175,12 @@ public class SmsRecyclerViewAdapter extends RecyclerView.Adapter<SmsRecyclerView
                 if (charString.isEmpty()) {
                     mSmsListFiltered.addAll(mSmsList);
                 } else {
-                    List<Sms> filteredList = new ArrayList<>();
-                    for (Sms row : mSmsList) {
+                    List<Message> filteredList = new ArrayList<>();
+                    for (Message row : mSmsList) {
 
                         // name match condition. this might differ depending on your requirement
                         // here we are looking for name or phone number match
-                        if (row.getMsg().toLowerCase().contains(charString.toLowerCase()) || row.getContact().getPhoneNumber().contains(charSequence)) {
+                        if (row.getMessage().toLowerCase().contains(charString.toLowerCase()) || row.getContact().getPhoneNumber().contains(charSequence)) {
                             filteredList.add(row);
                         }
                     }
@@ -158,7 +195,7 @@ public class SmsRecyclerViewAdapter extends RecyclerView.Adapter<SmsRecyclerView
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                mSmsListFiltered = (ArrayList<Sms>) filterResults.values;
+                mSmsListFiltered = (ArrayList<Message>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
@@ -170,7 +207,7 @@ public class SmsRecyclerViewAdapter extends RecyclerView.Adapter<SmsRecyclerView
 
     public interface SmsAdapterListener {
         void onItemClick(View itemView, int position);
-        void onSelectedSms(Sms sms);
+        void onSelectedSms(Message sms);
         void onLongClick(View view, int position);
     }
 
@@ -178,7 +215,7 @@ public class SmsRecyclerViewAdapter extends RecyclerView.Adapter<SmsRecyclerView
 //        this.listener = listener;
 //    }
 
-    public void addItem(Sms country) {
+    public void addItem(Message country) {
         mSmsList.add(country);
         notifyItemInserted(mSmsList.size());
     }
@@ -189,18 +226,34 @@ public class SmsRecyclerViewAdapter extends RecyclerView.Adapter<SmsRecyclerView
         mSmsList.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, mSmsList.size());
-        showUndoSnackbar();
+//        showUndoSnackbar();
     }
 
-    private void showUndoSnackbar() {
-        View view = mActivity.findViewById(R.id.sms_roll);
-        Snackbar snackbar = Snackbar.make(view, "Undo", Snackbar.LENGTH_LONG);
-        snackbar.setAction("Undo", v -> undoDelete());
-        snackbar.show();
+    public void callContact(int position) {
+        String address = mSmsList.get(position).getAddress();
+//        Utils.makeCall(address);
     }
+
+//    private void showUndoSnackbar() {
+//        View view = context.findViewById(R.id.coordinator);
+//        Snackbar snackbar = Snackbar.make(view, "Undo", Snackbar.LENGTH_LONG);
+//        snackbar.setAction("Undo", v -> undoDelete());
+//        snackbar.setActionTextColor(Color.YELLOW);
+//        snackbar.show();
+//    }
 
     private void undoDelete() {
         mSmsList.add(mRecentlyDeletedItemPosition, mRecentlyDeletedItem);
         notifyItemInserted(mRecentlyDeletedItemPosition);
+    }
+
+    public void restoreItem(Message message, int position) {
+        mSmsList.add(position, message);
+        notifyItemInserted(position);
+    }
+
+    public void setData(List<Message> newData) {
+        this.mSmsList = newData;
+        notifyDataSetChanged();
     }
 }

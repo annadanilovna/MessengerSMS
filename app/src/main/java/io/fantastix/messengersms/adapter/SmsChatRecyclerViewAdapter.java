@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -93,7 +95,9 @@ public class SmsChatRecyclerViewAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         Message item = messageList.get(position);
-        if ( /*item.getAddress().equals( "70523228" )*/ true){
+        String tempNo = item.getAddress().replace("+675", "");
+
+        if ( item.getType() == 2 ){
             return VIEW_TYPE_MESSAGE_SENT;
         }
         return VIEW_TYPE_MESSAGE_RECEIVED;
@@ -119,6 +123,10 @@ public class SmsChatRecyclerViewAdapter extends RecyclerView.Adapter {
             mTimeView = (TextView) itemView.findViewById(R.id.time);
 //            cv = (CardView) itemView.findViewById(R.id.cv);
 
+//            Animation animation = AnimationUtils.loadAnimation(context, (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
+//            result.startAnimation(animation);
+//            lastPosition = position;
+
 //            itemView.setOnClickListener(this);
         }
 
@@ -138,8 +146,9 @@ public class SmsChatRecyclerViewAdapter extends RecyclerView.Adapter {
         }
 
         public void bind(Message message) {
-            mMessageView.setText(message.getMessage());
-            mTimeView.setText(Utils.getDate(message.getTime()).trim());
+            mMessageView.setText(message.getMessage().trim());
+            mTimeView.setText(Utils.pretifier(message.getTime()).trim());
+//            mTimeView.setText(Utils.convertToTime(message.getTime()));
         }
     }
 
@@ -157,15 +166,13 @@ public class SmsChatRecyclerViewAdapter extends RecyclerView.Adapter {
 
         void bind(Message message) {
             messageText.setText(message.getMessage().trim());
-
             // Format the stored timestamp into a readable String using method.
-            timeText.setText(Utils.getDate(message.getTime()));
-//            timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
+            timeText.setText(Utils.pretifier(message.getTime()));
 //            nameText.setText(message.getSender().getNickname());
 
             // Insert the profile image from the URL into the ImageView.
 //            Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
-            profileImage.setImageResource(R.drawable.ic_default_profile_pic);
+            profileImage.setImageResource(R.drawable.bg_doodle);
         }
     }
 
@@ -193,7 +200,7 @@ public class SmsChatRecyclerViewAdapter extends RecyclerView.Adapter {
 //
 //        TextView msgRow = (TextView)view.findViewById(R.id.msg_row);
 //        msgRow.setText(item.getMessage());
-//        if( mymsg ){
+//        if ( mymsg ) {
 //            msgRow.setBackgroundResource(R.color.my_msg_background);
 //        }else{
 //            msgRow.setBackgroundResource(R.color.in_msg_background);

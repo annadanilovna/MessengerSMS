@@ -11,4 +11,11 @@
         android:id="@+id/app_bar_about"
         android:title="About"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/app_bar_sms_dump"
+        android:title="Sms dump"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/app_bar_bubble"
+        android:title="Add bubble"/>
 </menu>

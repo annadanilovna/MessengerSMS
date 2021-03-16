@@ -5,6 +5,10 @@
     android:orientation="horizontal"
     android:paddingTop="4dp"
     android:paddingBottom="4dp"
+    android:gravity="center_vertical"
+    android:minHeight="60dp"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="10dp"
     android:background="?android:attr/selectableItemBackground">
 
     <ImageView
@@ -12,12 +16,28 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="5dp"
-        android:src="@drawable/icon_144" />
+        android:src="@drawable/ic_default_profile_pic"
+        android:layout_gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/contact_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text="A"
+        android:textSize="25dp"
+        android:textColor="@android:color/white"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/colorAccent"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
         <TextView
             android:id="@+id/contact_name"
             android:layout_width="match_parent"
@@ -27,7 +47,7 @@
             android:layout_weight="1"
             android:text="Name"
             android:textSize="15sp"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:textAppearance="?attr/textAppearanceSearchResultTitle" />
 
         <TextView
             android:id="@+id/contact_number"
@@ -38,11 +58,7 @@
             android:layout_weight="1"
             android:text="number"
             android:textSize="15sp"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:textAppearance="?attr/textAppearanceBody1" />
     </LinearLayout>
 
-    <!--    <Button-->
-    <!--        android:id="@+id/message_button"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"/>-->
 </LinearLayout>

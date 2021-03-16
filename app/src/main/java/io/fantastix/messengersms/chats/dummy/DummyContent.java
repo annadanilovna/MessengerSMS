@@ -23,7 +23,7 @@ public class DummyContent {
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public static final Map<String, Message> ITEM_MAP = new HashMap<String, Message>();
+    public static final Map<Long, Message> ITEM_MAP = new HashMap<Long, Message>();
 
     private static final int COUNT = 25;
 

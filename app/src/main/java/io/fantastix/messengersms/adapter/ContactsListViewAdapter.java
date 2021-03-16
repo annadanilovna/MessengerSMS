@@ -56,7 +56,7 @@ public class ContactsListViewAdapter extends BaseAdapter implements Filterable {
 
         name.setText(m.getName());
         number.setText(m.getPhoneNumber());
-        photo.setImageURI(Uri.parse(m.getPhotoUri()));
+//        photo.setImageURI(Uri.parse(m.getPhotoUri()));
 
         return v;
     }

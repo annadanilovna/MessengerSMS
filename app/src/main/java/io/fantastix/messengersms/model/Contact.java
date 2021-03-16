@@ -28,7 +28,7 @@ public class Contact implements Serializable {
     }
 
     public void setName(String name) {
-        mName = name;
+        this.mName = name;
     }
 
     public boolean isOnline() {

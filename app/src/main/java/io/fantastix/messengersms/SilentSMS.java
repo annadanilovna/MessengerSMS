@@ -114,8 +114,7 @@
 //			public void onClick(View v) {
 //				Intent contactPickerIntent = new Intent(Intent.ACTION_PICK);
 //				contactPickerIntent.setData(Contacts.CONTENT_URI);
-//				contactPickerIntent
-//						.setType(android.provider.ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+//				contactPickerIntent.setType(android.provider.ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
 //				startActivityForResult(contactPickerIntent,
 //						CONTACT_PICKER_RESULT);
 //			}

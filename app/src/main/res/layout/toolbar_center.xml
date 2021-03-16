@@ -5,7 +5,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="?attr/actionBarSize"
 	android:gravity="center"
-	style="@style/Theme.MessengerSMS.HeaderBar"
+	style="@style/Theme.MessengerSMS.Toolbar"
 	android:theme="@style/Theme.MessengerSMS.PopupOverlay"
 	app:popupTheme="@style/Theme.MessengerSMS.PopupOverlay">
 
